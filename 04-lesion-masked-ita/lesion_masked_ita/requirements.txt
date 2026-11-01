@@ -1,0 +1,16 @@
+numpy
+opencv-python-headless
+pillow
+scikit-image
+
+# optional --backend unet (dermoscopy ISIC weights)
+# torch
+# segmentation-models-pytorch
+# huggingface_hub
+
+# optional --backend sam_adapter (dermoscopy SAM + melanoma adapter)
+# also needs: external/medical_sam_adapter checkout (see PIN.txt there)
+# torch
+# torchvision
+# einops
+# huggingface_hub

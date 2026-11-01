@@ -1,0 +1,9 @@
+Pinned for lesion_masked_ita --backend sam_adapter.
+
+repo: https://github.com/ImprintLab/Medical-SAM-Adapter
+commit: 5888e722876511f177e8e762498a7986753b7f7d
+
+Adapter weights (not stored in git):
+  KidsWithTokens/Medical-Adapter-Zoo Melanoma_Photo_SAM_1024.pth
+SAM base:
+  https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth

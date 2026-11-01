@@ -1,0 +1,62 @@
+{
+  "images": 16,
+  "device": "mps",
+  "fitzpatrick_groups": [
+    {
+      "category": "I-II",
+      "count": 9,
+      "percent": 56.25
+    },
+    {
+      "category": "III-IV",
+      "count": 7,
+      "percent": 43.75
+    }
+  ],
+  "ita_categories": [
+    {
+      "category": "dark",
+      "count": 0,
+      "percent": 0.0
+    },
+    {
+      "category": "brown",
+      "count": 4,
+      "percent": 25.0
+    },
+    {
+      "category": "tan",
+      "count": 3,
+      "percent": 18.75
+    },
+    {
+      "category": "intermediate",
+      "count": 7,
+      "percent": 43.75
+    },
+    {
+      "category": "light",
+      "count": 1,
+      "percent": 6.25
+    },
+    {
+      "category": "very_light",
+      "count": 1,
+      "percent": 6.25
+    }
+  ],
+  "diagnosis_subgroups": [
+    {
+      "diagnosis_folder": "benign",
+      "images": 16,
+      "FST_V_VI_percent": 0.0,
+      "median_ITA": 28.96,
+      "review_percent": 18.75
+    }
+  ],
+  "median_ita": 28.962,
+  "review_recommended_count": 3,
+  "review_recommended_percent": 18.75,
+  "exact_duplicate_images": 0,
+  "cross_split_duplicate_images": 0
+}

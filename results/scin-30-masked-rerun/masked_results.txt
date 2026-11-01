@@ -1,0 +1,55 @@
+MASKED RERUN OF THE 30-IMAGE SCIN CHECK
+Same models as the original test. Pure black pixels (RGB 0,0,0) were removed:
+crop to the non-black box, then fill any black still inside that box with the mean of the remaining pixels, then resize to 224.
+
+ALL  n=30
+  exact    unmasked 27%   masked 23%
+  within1  unmasked 93%   masked 83%
+  bucket   unmasked 73%   masked 73%
+  mean ITA unmasked -5.3   masked -6.1
+
+eFST 1-3  n=15
+  exact    unmasked 20%   masked 0%
+  within1  unmasked 87%   masked 67%
+  bucket   unmasked 67%   masked 53%
+  mean ITA unmasked 3.3   masked 1.6
+
+eFST 4-6  n=15
+  exact    unmasked 33%   masked 47%
+  within1  unmasked 100%   masked 100%
+  bucket   unmasked 80%   masked 93%
+  mean ITA unmasked -14.0   masked -13.9
+
+Per image: dermatologist eFST, unmasked call, masked call, ITA unmasked -> masked
+  eFST 1  1 -> 2   ITA   10.8 ->    5.4   black 29%   efst1_pred1_AT_AN_ANGLE_-881285348752650190.tif
+  eFST 1  1 -> 2   ITA   25.7 ->   24.0   black 37%   efst1_pred1_AT_AN_ANGLE_6317542003263234425.tif
+  eFST 1  1 -> 4   ITA    4.0 ->   -6.8   black 34%   efst1_pred1_CLOSE_UP_-4775737555503338922.tif
+  eFST 1  2 -> 2   ITA   35.7 ->   34.6   black 14%   efst1_pred2_CLOSE_UP_-6298741035410938228.tif
+  eFST 2  3 -> 3   ITA    7.0 ->   -6.4   black 32%   efst2_pred3_AT_AN_ANGLE_-3154952215641996585.tif
+  eFST 2  3 -> 3   ITA   -2.5 ->    4.6   black 39%   efst2_pred3_AT_AN_ANGLE_4462720430801649416.tif
+  eFST 2  3 -> 3   ITA    0.0 ->   -9.4   black 60%   efst2_pred3_AT_DISTANCE_6940377893753972358.tif
+  eFST 2  3 -> 3   ITA   11.1 ->    0.4   black 44%   efst2_pred3_CLOSE_UP_-223509246511414690.tif
+  eFST 2  3 -> 4   ITA  -15.1 ->   -3.0   black 36%   efst2_pred3_CLOSE_UP_-250190786256081369.tif
+  eFST 2  3 -> 3   ITA   12.3 ->   17.2   black 18%   efst2_pred3_CLOSE_UP_782573551119636259.tif
+  eFST 2  5 -> 4   ITA  -16.3 ->  -10.6   black 25%   efst2_pred5_CLOSE_UP_4225047441052378094.tif
+  eFST 3  4 -> 4   ITA    1.7 ->    3.9   black 53%   efst3_pred4_AT_AN_ANGLE_-8912255557105999166.tif
+  eFST 3  4 -> 5   ITA  -14.7 ->  -22.5   black 39%   efst3_pred4_AT_AN_ANGLE_5594383424753261035.tif
+  eFST 3  4 -> 4   ITA   -8.2 ->   -4.8   black 28%   efst3_pred4_CLOSE_UP_-7737567151272326815.tif
+  eFST 3  5 -> 5   ITA   -2.0 ->   -2.0   black 0%   efst3_pred5_CLOSE_UP_-2599589943800827158.png
+  eFST 4  3 -> 4   ITA    0.6 ->   11.5   black 39%   efst4_pred3_CLOSE_UP_-1350086547191064233.tif
+  eFST 4  3 -> 4   ITA    2.0 ->    4.7   black 25%   efst4_pred3_CLOSE_UP_-3748755439497830987.tif
+  eFST 4  3 -> 3   ITA   -7.1 ->   -2.3   black 40%   efst4_pred3_CLOSE_UP_1731933494189078674.tif
+  eFST 4  4 -> 4   ITA   -0.5 ->  -23.7   black 46%   efst4_pred4_AT_AN_ANGLE_-7609697586211899286.tif
+  eFST 4  4 -> 4   ITA   -3.5 ->   -6.9   black 23%   efst4_pred4_CLOSE_UP_3958546394143844695.tif
+  eFST 4  5 -> 5   ITA   -1.3 ->   -7.3   black 32%   efst4_pred5_AT_AN_ANGLE_-521328877742525221 copy.png
+  eFST 4  5 -> 5   ITA  -26.0 ->  -31.5   black 66%   efst4_pred5_AT_DISTANCE_-1607687872846341789.tif
+  eFST 4  5 -> 4   ITA  -30.1 ->  -21.0   black 82%   efst4_pred5_AT_DISTANCE_-5863256407851897110.tif
+  eFST 4  5 -> 5   ITA  -11.8 ->   -7.6   black 18%   efst4_pred5_CLOSE_UP_-2409845719071941216.tif
+  eFST 4  5 -> 5   ITA  -30.6 ->  -30.6   black 0%   efst4_pred5_CLOSE_UP_-5124788669621739310 copy.png
+  eFST 4  5 -> 5   ITA  -16.4 ->  -16.4   black 0%   efst4_pred5_CLOSE_UP_-9094315971295153245 copy.png
+  eFST 4  5 -> 5   ITA  -17.1 ->  -15.2   black 9%   efst4_pred5_CLOSE_UP_2670414153543408123.tif
+  eFST 5  5 -> 5   ITA  -24.6 ->   -6.4   black 11%   efst5_pred5_AT_AN_ANGLE_6251567938156488914.tif
+  eFST 5  5 -> 5   ITA  -10.9 ->  -19.8   black 23%   efst5_pred5_CLOSE_UP_-3386080652221737750.tif
+  eFST 5  5 -> 6   ITA  -32.7 ->  -36.0   black 34%   efst5_pred5_CLOSE_UP_3713337097779190437.tif
+
+eFST 1-3 called 4-6: unmasked 5 of 15, masked 7 of 15

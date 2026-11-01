@@ -1,0 +1,56 @@
+IGNORE-BLACK RERUN
+Black pixels were not painted over. Each image was split into patches that contain no pure black pixel.
+The model ran on those patches only. Fitzpatrick is the majority across patches. ITA is the mean Lab across patches and folds.
+Patch size 224 where a clean patch exists, otherwise 112 resized to 224. Up to 8 patches per image.
+
+ALL  n=30
+  within1  unmasked 93%   filled 83%   ignore-black 83%
+  exact    unmasked 27%   filled 23%   ignore-black 33%
+  bucket   unmasked 73%   filled 73%   ignore-black 67%
+  mean ITA unmasked -5.3   filled -6.1   ignore-black 9.1
+
+eFST 1-3  n=15
+  within1  unmasked 87%   filled 67%   ignore-black 67%
+  exact    unmasked 20%   filled 0%   ignore-black 7%
+  bucket   unmasked 67%   filled 53%   ignore-black 60%
+  mean ITA unmasked 3.3   filled 1.6   ignore-black 18.0
+
+eFST 4-6  n=15
+  within1  unmasked 100%   filled 100%   ignore-black 100%
+  exact    unmasked 33%   filled 47%   ignore-black 60%
+  bucket   unmasked 80%   filled 93%   ignore-black 73%
+  mean ITA unmasked -14.0   filled -13.9   ignore-black 0.2
+
+eFST 1-3 called 4-6: unmasked 5 of 15, filled 7 of 15, ignore-black 6 of 15
+
+Per image: eFST, unmasked -> filled -> ignore-black, ITA unmasked -> ignore
+  eFST 1  1 -> 2 -> 2   ITA   10.8 ->   31.7   8x224   efst1_pred1_AT_AN_ANGLE_-881285348752650190.tif
+  eFST 1  1 -> 2 -> 2   ITA   25.7 ->   47.3   8x224   efst1_pred1_AT_AN_ANGLE_6317542003263234425.tif
+  eFST 1  1 -> 4 -> 3   ITA    4.0 ->   13.0   8x224   efst1_pred1_CLOSE_UP_-4775737555503338922.tif
+  eFST 1  2 -> 2 -> 2   ITA   35.7 ->   37.7   8x224   efst1_pred2_CLOSE_UP_-6298741035410938228.tif
+  eFST 2  3 -> 3 -> 3   ITA    7.0 ->   13.8   8x224   efst2_pred3_AT_AN_ANGLE_-3154952215641996585.tif
+  eFST 2  3 -> 3 -> 3   ITA   -2.5 ->   20.4   8x224   efst2_pred3_AT_AN_ANGLE_4462720430801649416.tif
+  eFST 2  3 -> 3 -> 4   ITA    0.0 ->   22.5   1x224   efst2_pred3_AT_DISTANCE_6940377893753972358.tif
+  eFST 2  3 -> 3 -> 3   ITA   11.1 ->   10.4   8x224   efst2_pred3_CLOSE_UP_-223509246511414690.tif
+  eFST 2  3 -> 4 -> 4   ITA  -15.1 ->   13.7   8x224   efst2_pred3_CLOSE_UP_-250190786256081369.tif
+  eFST 2  3 -> 3 -> 3   ITA   12.3 ->   36.7   8x224   efst2_pred3_CLOSE_UP_782573551119636259.tif
+  eFST 2  5 -> 4 -> 5   ITA  -16.3 ->   -0.2   6x224   efst2_pred5_CLOSE_UP_4225047441052378094.tif
+  eFST 3  4 -> 4 -> 4   ITA    1.7 ->    3.9   8x224   efst3_pred4_AT_AN_ANGLE_-8912255557105999166.tif
+  eFST 3  4 -> 5 -> 3   ITA  -14.7 ->    9.6   8x224   efst3_pred4_AT_AN_ANGLE_5594383424753261035.tif
+  eFST 3  4 -> 4 -> 5   ITA   -8.2 ->    7.5   8x224   efst3_pred4_CLOSE_UP_-7737567151272326815.tif
+  eFST 3  5 -> 5 -> 4   ITA   -2.0 ->    2.5   8x224   efst3_pred5_CLOSE_UP_-2599589943800827158.png
+  eFST 4  3 -> 4 -> 3   ITA    0.6 ->   14.2   8x224   efst4_pred3_CLOSE_UP_-1350086547191064233.tif
+  eFST 4  3 -> 4 -> 4   ITA    2.0 ->    3.5   8x224   efst4_pred3_CLOSE_UP_-3748755439497830987.tif
+  eFST 4  3 -> 3 -> 4   ITA   -7.1 ->    8.0   8x224   efst4_pred3_CLOSE_UP_1731933494189078674.tif
+  eFST 4  4 -> 4 -> 3   ITA   -0.5 ->   12.2   4x224   efst4_pred4_AT_AN_ANGLE_-7609697586211899286.tif
+  eFST 4  4 -> 4 -> 3   ITA   -3.5 ->    1.6   8x224   efst4_pred4_CLOSE_UP_3958546394143844695.tif
+  eFST 4  5 -> 5 -> 5   ITA   -1.3 ->    0.4   8x224   efst4_pred5_AT_AN_ANGLE_-521328877742525221 copy.png
+  eFST 4  5 -> 5 -> 4   ITA  -26.0 ->    5.9   8x112   efst4_pred5_AT_DISTANCE_-1607687872846341789.tif
+  eFST 4  5 -> 4 -> 4   ITA  -30.1 ->   -0.0   8x112   efst4_pred5_AT_DISTANCE_-5863256407851897110.tif
+  eFST 4  5 -> 5 -> 4   ITA  -11.8 ->    3.7   8x224   efst4_pred5_CLOSE_UP_-2409845719071941216.tif
+  eFST 4  5 -> 5 -> 3   ITA  -30.6 ->   -3.7   8x224   efst4_pred5_CLOSE_UP_-5124788669621739310 copy.png
+  eFST 4  5 -> 5 -> 4   ITA  -16.4 ->  -13.1   8x224   efst4_pred5_CLOSE_UP_-9094315971295153245 copy.png
+  eFST 4  5 -> 5 -> 5   ITA  -17.1 ->   -6.9   8x224   efst4_pred5_CLOSE_UP_2670414153543408123.tif
+  eFST 5  5 -> 5 -> 5   ITA  -24.6 ->   -3.0   8x224   efst5_pred5_AT_AN_ANGLE_6251567938156488914.tif
+  eFST 5  5 -> 5 -> 5   ITA  -10.9 ->   -8.9   8x224   efst5_pred5_CLOSE_UP_-3386080652221737750.tif
+  eFST 5  5 -> 6 -> 5   ITA  -32.7 ->  -11.0   8x224   efst5_pred5_CLOSE_UP_3713337097779190437.tif

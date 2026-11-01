@@ -1,0 +1,21 @@
+{
+  "images": 19,
+  "device": "mps",
+  "median_masked_pixel_ita": 12.206,
+  "median_neural_ita": -5.818,
+  "median_absolute_ita_difference": 25.5,
+  "review_recommended": 13,
+  "ita_categories": {
+    "dark": 1,
+    "brown": 8,
+    "tan": 2,
+    "intermediate": 4,
+    "light": 2,
+    "very_light": 2
+  },
+  "fitzpatrick_groups": {
+    "I-II": 1,
+    "III-IV": 12,
+    "V-VI": 6
+  }
+}

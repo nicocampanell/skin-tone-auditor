@@ -1,0 +1,130 @@
+SCIN eFST CHECK OF nn_colorimetry_dermatoscopy
+Prepared 28 September 2026.
+
+
+1. WHAT THIS IS
+
+A check of the released Marin Benčević colorimetry models on 200 public SCIN
+images: 100 with dermatologist-estimated Fitzpatrick (eFST) 1–3 and 100 with
+eFST 4–6. The models were not modified, fine-tuned, or masked. This is a
+reference run, not a validation of our auditor.
+
+Source images: gs://dx-scin-public-data (SCIN public bucket).
+Models: github.com/marinbenc/nn_colorimetry_dermatoscopy, release tag preprint.
+Per-image output: scin_efst_colorimetry_results.csv
+Sample list: nn_colorimetry_dermatoscopy/data/scin/sample_manifest.csv
+
+
+2. WHAT WAS LEFT UNCHANGED
+
+Both released heads were used as published.
+
+  finetune_mskcc_blur0       EfficientNet-B4, CORAL ordinal head, Fitzpatrick
+  finetune_mskcc_blur0_lab   EfficientNet-B4, CIELab regression, used for ITA
+
+Five folds each. Weights were loaded from the release and not trained further.
+Preprocessing matches the fine-tune configs: resize to 224×224, ImageNet
+normalization, blur off, white balance off. No lesion mask. The Fitzpatrick
+call is the majority vote of the five folds. ITA is the mean Lab prediction
+across folds, then arctan2(L − 50, b) in degrees, which is the formula in
+the repo's test_lab.py.
+
+These networks were trained on dermoscopic images with colorimeter labels.
+SCIN images are clinical photographs. That domain gap is the main limit on
+how to read the numbers below.
+
+
+3. HOW THE 200 IMAGES WERE CHOSEN
+
+eFST is the majority of dermatologist_fitzpatrick_skin_type_label_1/2/3.
+Cases with a tie, or with no parseable FST label, were left out. Self-reported
+Fitzpatrick was not used. Image-quality and "gradable for Fitzpatrick" flags
+were not used as filters.
+
+Each bucket is a uniform random sample of 100 distinct images from every SCIN
+image on a qualifying case. Seed 42. Shot type was not filtered. A case can
+contribute more than one of its images.
+
+Pools before the draw:
+  eFST 1–3    6,273 images
+  eFST 4–6    2,309 images
+
+What landed in the sample:
+
+  eFST    count     shot type              count
+  1         16      close-up                 96
+  2         40      at an angle              55
+  3         44      at a distance            49
+  4         63
+  5         35      unique cases, eFST 1–3   97
+  6          2      unique cases, eFST 4–6   99
+
+Most cases have a single dermatologist eFST label (83 of 100 in the light
+bucket, 87 of 100 in the dark bucket). Type 6 is almost absent in this draw
+because it is rare in the public set, not because it was excluded.
+
+
+4. FITZPATRICK RESULTS
+
+Predicted type (columns) against dermatologist eFST (rows).
+
+              pred 1    2    3    4    5    6
+  eFST 1           8    5    2    1    0    0
+  eFST 2           0    6   22   11    1    0
+  eFST 3           0    3    8   25    8    0
+  eFST 4           0    0    6   28   29    0
+  eFST 5           0    0    0    1   27    7
+  eFST 6           0    0    0    0    0    2
+
+Exact type match: 79 / 200 (39.5%).
+Within one type: 177 / 200 (88.5%).
+All five folds agreed: 72.5% of images.
+
+Bucket agreement (predicted 1–3 vs 4–6, compared with the sample bucket):
+
+  eFST 1–3     54% called 1–3     (46 of 100 called 4–6)
+  eFST 4–6     94% called 4–6     (6 of 100 called 1–3)
+
+The errors are one-sided. Lighter images are pushed darker. Darker images
+are rarely called light. The fold majority is not a confidence score.
+
+
+5. ITA RESULTS
+
+Mean of the five Lab folds, then ITA.
+
+  bucket     mean ITA    median    std     min      max
+  eFST 1–3      2.1        1.8     12.5   -26.9     38.9
+  eFST 4–6    -14.7      -16.2     13.1   -41.9     19.3
+
+By dermatologist type:
+
+  eFST    n     mean ITA    median
+  1      16        7.0        7.7
+  2      40        2.4        2.8
+  3      44        0.0        0.7
+  4      63      -12.0      -11.8
+  5      35      -19.4      -19.4
+  6       2      -17.6      -17.6
+
+The two buckets separate in the expected direction: lighter eFST has higher
+ITA. The absolute values do not. Published ITA bands for Fitzpatrick I–III
+sit well above these means (often above +20, and type I above +55). A mean
+near 0 for eFST 1–3 is not a calibrated colorimeter reading of those photos.
+Type 6 has only two images, so that row is not a rate.
+
+
+6. HOW TO READ THIS
+
+The model ranks the two SCIN buckets, and it is usually within one Fitzpatrick
+type of the dermatologist label. It is not calibrated as an ITA meter on
+clinical photos, and it systematically calls light skin darker.
+
+Two setup facts explain part of that, and neither was changed for this test.
+The training images are dermoscopy, not phone photos. Inference uses the whole
+frame, so lesion, background, and clothing stay in the input. Our own rule is
+to measure ITA on healthy skin after the lesion is masked, and to abstain when
+too little skin remains. This run did not do that.
+
+Do not treat these 200 images as a test set for our auditor. They were drawn
+to see what this released checkpoint does on SCIN.

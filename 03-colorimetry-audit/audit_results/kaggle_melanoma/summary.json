@@ -1,0 +1,74 @@
+{
+  "images": 10605,
+  "device": "mps",
+  "fitzpatrick_groups": [
+    {
+      "category": "I-II",
+      "count": 5537,
+      "percent": 52.21
+    },
+    {
+      "category": "III-IV",
+      "count": 4749,
+      "percent": 44.78
+    },
+    {
+      "category": "V-VI",
+      "count": 319,
+      "percent": 3.01
+    }
+  ],
+  "ita_categories": [
+    {
+      "category": "dark",
+      "count": 19,
+      "percent": 0.18
+    },
+    {
+      "category": "brown",
+      "count": 2679,
+      "percent": 25.26
+    },
+    {
+      "category": "tan",
+      "count": 3778,
+      "percent": 35.62
+    },
+    {
+      "category": "intermediate",
+      "count": 2799,
+      "percent": 26.39
+    },
+    {
+      "category": "light",
+      "count": 1238,
+      "percent": 11.67
+    },
+    {
+      "category": "very_light",
+      "count": 92,
+      "percent": 0.87
+    }
+  ],
+  "diagnosis_subgroups": [
+    {
+      "diagnosis_folder": "benign",
+      "images": 5500,
+      "FST_V_VI_percent": 0.78,
+      "median_ITA": 25.2,
+      "review_percent": 16.64
+    },
+    {
+      "diagnosis_folder": "malignant",
+      "images": 5105,
+      "FST_V_VI_percent": 5.41,
+      "median_ITA": 20.16,
+      "review_percent": 40.51
+    }
+  ],
+  "median_ita": 23.232,
+  "review_recommended_count": 2983,
+  "review_recommended_percent": 28.13,
+  "exact_duplicate_images": 44,
+  "cross_split_duplicate_images": 14
+}
